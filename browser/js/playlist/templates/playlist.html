@@ -1,5 +1,15 @@
 <div>
   <h3>{{ playlist.name }}</h3>
+
+  <form name="songAdder" class="form-group">
+
+    <select class="form-control" name='songSelect' ng-options="song as song.name for song in songList" ng-model="selected" required>
+    </select>
+
+    <button class="btn btn-success" ng-disabled="songAdder.$invalid" ng-click="addSong(selected, playlist._id)">Add To Playlist</button>
+
+  </form>
+
   <table class='table' ng-show="playlist.songs.length">
     <thead>
       <tr>
@@ -10,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="song in playlist.songs" ng-class="{active: song === getCurrentSong() }">
+      <tr ng-repeat="song in playlistSongs" ng-class="{active: song === getCurrentSong() }">
         <td>
           <button class="btn btn-default btn-xs" ng-click="toggle(song)">
             <span class="glyphicon" ng-class="{ 'glyphicon-pause': isPlaying(song), 'glyphicon-play': !isPlaying(song) }"></span>
