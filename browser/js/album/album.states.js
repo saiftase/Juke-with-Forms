@@ -24,10 +24,15 @@ juke.config(function ($stateProvider) {
     }
   });
 
-
   $stateProvider.state('newplaylist', {
     url: '/newplaylist',
     templateUrl: '/js/playlist/templates/newplaylist.html',
+    controller: 'PlaylistFormCtrl'
+  });
+
+  $stateProvider.state('playlist', {
+    url: '/playlist/:id',
+    templateUrl: '/js/playlist/templates/playlist.html',
     controller: 'PlaylistCtrl'
   });
 

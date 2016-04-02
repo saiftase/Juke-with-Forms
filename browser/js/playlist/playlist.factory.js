@@ -32,6 +32,13 @@ juke.factory('PlaylistFactory', function ($http) {
     });
   };
 
+  PlaylistFactory.fetchById = function(id){
+  	return $http.get('api/playlists/' + id)
+  	.then(function(response){
+			return response.data;
+  	})
+  }
+
   PlaylistFactory.create = function (data) {
     return $http.post('/api/playlists', data)
     .then(function (response) {
